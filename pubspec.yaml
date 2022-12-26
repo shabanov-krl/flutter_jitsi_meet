@@ -1,5 +1,5 @@
 name: flutter_jitsi_meet
-description: A new Flutter plugin project.
+description: Jitsi Meet Plugin - A plugin for integrating open source Jitsi Meet API in flutter.
 version: 0.0.1
 homepage: https://github.com/shabanov-krl/flutter_jitsi_meet
 
