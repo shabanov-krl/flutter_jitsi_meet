@@ -1,7 +1,7 @@
 name: flutter_jitsi_meet
 description: A new Flutter plugin project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/shabanov-krl/flutter_jitsi_meet
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
