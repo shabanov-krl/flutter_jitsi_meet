@@ -1,14 +1,29 @@
 import Flutter
 import UIKit
 
-public class SwiftFlutterJitsiMeetPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterJitsiMeetPlugin: NSObject, FlutterPlugin, FlutterJitsiMeetApi {
+  var usedApps = [
+    UsedApp(id: "com.reddit.app", name: "Reddit", minutesUsed: 75),
+    UsedApp(id: "dev.hashnode.app", name: "Hashnode", minutesUsed:37),
+    UsedApp(id: "link.timelog.app", name: "Timelog", minutesUsed: 25)
+  ]
+
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_jitsi_meet", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterJitsiMeetPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
+    let messenger : FlutterBinaryMessenger = registrar.messenger()
+    let api : FlutterJitsiMeetApi & NSObjectProtocol = SwiftFlutterJitsiMeetPlugin.init()
+
+    FlutterJitsiMeetApiSetup.setUp(binaryMessenger: messenger, api: api)
   }
 
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+  func getPlatformVersion(completion: @escaping (String?) -> Void) {
+    completion("iOS " + UIDevice.current.systemVersion)
+  }
+
+  func getApps(completion: @escaping ([UsedApp]) -> Void) {
+    completion(usedApps)
+  }
+
+  func setAppTimeLimit(appId: String, durationInMinutes: Int32, completion: @escaping (TimeLimitResult) -> Void) {
+    completion(TimeLimitResult(state: ResultState.success, message: "Timer of \(durationInMinutes) minutes set for app ID \(appId)"))
   }
 }

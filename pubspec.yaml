@@ -16,6 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  pigeon: ^4.2.14
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -35,7 +36,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.shabanovkrl.flutter_jitsi_meet.flutter_jitsi_meet
+        package: com.shabanovkrl.flutter_jitsi_meet
         pluginClass: FlutterJitsiMeetPlugin
       ios:
         pluginClass: FlutterJitsiMeetPlugin
